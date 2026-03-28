@@ -6,6 +6,7 @@ name: Build and deploy Node.js app to Azure Web App - delivery-app-server
 env:
     AZURE_WEBAPP_NAME: "delivery-app-server"
     AZURE_WEBAPP_PACKAGE_PATH: "./server"
+    DATABASE_URL: ${{ secrets.DATABASE_URL }}
     NODE_VERSION: "24.x"
 on:
     push:
