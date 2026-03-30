@@ -8,16 +8,10 @@ function Header() {
 			<h1 className="font-bold text-2xl">DeliveryApp</h1>
 			<NavMenu
 				items={[
-					<Link
-						className="font-semibold text-lg active:underline"
-						to="/"
-					>
+					<Link className="font-semibold text-lg" to="/">
 						Shops
 					</Link>,
-					<Link
-						className="font-semibold text-lg active:underline"
-						to="/cart"
-					>
+					<Link className="font-semibold text-lg" to="/cart">
 						Cart
 					</Link>,
 				]}

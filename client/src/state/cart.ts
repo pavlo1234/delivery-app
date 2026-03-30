@@ -1,5 +1,5 @@
 import { createStore, useStore } from "zustand";
-import { persist } from "zustand/middleware";
+import { persist, createJSONStorage } from "zustand/middleware";
 
 import type { Product } from "@/api/products";
 
@@ -51,6 +51,7 @@ export const cartState = createStore<Cart>()(
 		}),
 		{
 			name: "cart-storage",
+			storage: createJSONStorage(() => sessionStorage),
 		},
 	),
 );

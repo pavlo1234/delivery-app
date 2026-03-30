@@ -1,6 +1,5 @@
 import { Item, ItemTitle, ItemMedia, ItemContent } from "@/components/ui/item";
-
-import thumbnail from "@/assets/product_thumbnail.png";
+import { Badge } from "@/components/ui/badge";
 
 import type { Product } from "@/api/products";
 
@@ -18,13 +17,16 @@ function ProductItem({
 	return (
 		<Item className={`${className} flex flex-row w-full max-w-xs`}>
 			<ItemMedia variant={imageType} className="mx-auto">
-				<img src={thumbnail} className="max-w-full h-auto" />
+				<img src={item.imageUrl} className="max-w-full h-auto" />
 			</ItemMedia>
-
-			<ItemContent className="flex flex-wrap flex-row justify-between items-center">
+			<ItemContent className="flex flex-wrap flex-col gap-1">
 				<ItemTitle>{item.title}</ItemTitle>
 				<span className="font-bold text-lg">${item.price}</span>
 			</ItemContent>
+			<div className="flex flex-row flex-wrap gap-1 z-10">
+				<Badge>{item.shop?.title}</Badge>
+				<Badge variant="secondary">{item.category?.title}</Badge>
+			</div>
 		</Item>
 	);
 }

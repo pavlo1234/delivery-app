@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
 	Card,
 	CardContent,
@@ -16,7 +18,7 @@ import {
 
 import { ChevronDown } from "lucide-react";
 
-import CartItem from "@/components/functionals/CartItem";
+import CartItem from "@/components/pages/cart/CartItem";
 import { useCart } from "@/state/cart";
 
 type CartViewProps = {
@@ -24,6 +26,7 @@ type CartViewProps = {
 };
 
 function CartView({ className }: CartViewProps) {
+	const [isOpen, setIsOpen] = useState<boolean>(true);
 	const { items, clear } = useCart();
 	const totalPrice = items.reduce(
 		(prev, item) => (prev += item.product.price * item.amount),
@@ -33,6 +36,8 @@ function CartView({ className }: CartViewProps) {
 	return (
 		<Card className={`${className} h-min`}>
 			<Collapsible
+				open={isOpen}
+				onOpenChange={setIsOpen}
 				defaultOpen={true}
 				className="h-full flex flex-col justify-between"
 			>
@@ -41,7 +46,10 @@ function CartView({ className }: CartViewProps) {
 						Products:
 					</CardTitle>
 					<CollapsibleTrigger asChild>
-						<Button variant="ghost">
+						<Button
+							variant="link"
+							onClick={() => setIsOpen(!isOpen)}
+						>
 							<ChevronDown />
 						</Button>
 					</CollapsibleTrigger>
@@ -51,7 +59,7 @@ function CartView({ className }: CartViewProps) {
 						<ScrollArea className="h-full py-2 pr-5">
 							{!items.length ? (
 								<div className="text-md text-center align-center text-gray-500 py-5">
-									No products added yet
+									No products added yet.
 								</div>
 							) : (
 								<ItemGroup className="items-center">

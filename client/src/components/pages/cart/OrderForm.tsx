@@ -59,7 +59,7 @@ function OrderForm({ className }: OrderFormProps) {
 				<CardTitle className="text-lg font-bold">
 					Order Details:
 				</CardTitle>
-				<Button variant="ghost" onClick={() => setIsOpen(!isOpen)}>
+				<Button variant="link" onClick={() => setIsOpen(!isOpen)}>
 					<ChevronDown />
 				</Button>
 			</CardHeader>
@@ -90,6 +90,7 @@ function OrderForm({ className }: OrderFormProps) {
 												}
 												type="text"
 												placeholder="Max Leiter"
+												required
 											/>
 											{fieldState.invalid && (
 												<FieldError
@@ -114,6 +115,7 @@ function OrderForm({ className }: OrderFormProps) {
 												aria-invalid={
 													fieldState.invalid
 												}
+												required
 											/>
 											{fieldState.invalid && (
 												<FieldError
@@ -139,6 +141,7 @@ function OrderForm({ className }: OrderFormProps) {
 												aria-invalid={
 													fieldState.invalid
 												}
+												required
 											/>
 											{fieldState.invalid && (
 												<FieldError
@@ -164,6 +167,7 @@ function OrderForm({ className }: OrderFormProps) {
 												aria-invalid={
 													fieldState.invalid
 												}
+												required
 											/>
 											{fieldState.invalid && (
 												<FieldError

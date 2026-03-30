@@ -2,8 +2,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 import Header from "@/components/layout/Header";
 
-import OrderForm from "@/components/functionals/OrderForm";
-import CartView from "@/components/functionals/CartView";
+import OrderForm from "@/components/pages/cart/OrderForm";
+import CartView from "@/components/pages/cart/CartView";
 
 function CartPage() {
 	return (

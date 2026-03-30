@@ -29,7 +29,9 @@ function ProductCard({ item }: ProductCardProps) {
 	}
 
 	return (
-		<Card className={`max-w-xs w-full ${notAvailable && "grayscale"}`}>
+		<Card
+			className={`max-w-xs w-full h-fit gap-0 ${notAvailable && "grayscale"}`}
+		>
 			<ProductItem item={item} />
 			<CardFooter className="flex flex-row justify-around gap-5">
 				<Input
@@ -61,13 +63,24 @@ type ProductsViewProps = {
 
 function ProductsView({ className, items }: ProductsViewProps) {
 	return (
-		<div
-			className={`${className} grid gap-3 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4`}
-		>
-			{items.map((item: Product) => (
-				<ProductCard key={item.id} item={item} />
-			))}
-		</div>
+		<>
+			{" "}
+			{items.length ? (
+				<div
+					className={`${className} flex flex-row flex-wrap gap-5 justify-center`}
+				>
+					{items.map((item: Product) => (
+						<ProductCard key={item.id} item={item} />
+					))}
+				</div>
+			) : (
+				<div
+					className={`${className} text-md text-center align-center text-gray-500 py-5`}
+				>
+					No products available.
+				</div>
+			)}
+		</>
 	);
 }
 

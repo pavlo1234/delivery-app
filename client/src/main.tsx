@@ -5,8 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router";
 
 import "./index.css";
 
-import ShopsPage from "./components/pages/ShopsPage";
-import CartPage from "./components/pages/CartPage";
+import ShopsPage from "./components/pages/shops/ShopsPage";
+import CartPage from "./components/pages/cart/CartPage";
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>

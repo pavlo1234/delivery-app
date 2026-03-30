@@ -3,6 +3,7 @@ import { client } from "../database/client.js";
 type OrderDetails = {
 	fullname: string;
 	email: string;
+	phone: string;
 	address: string;
 	purchasedAt: Date;
 };
@@ -18,10 +19,7 @@ export async function createOrder(
 ) {
 	await client.orders.create({
 		data: {
-			fullname: details.fullname,
-			email: details.email,
-			address: details.address,
-			purchased_at: details.purchasedAt,
+			...details,
 			products: {
 				create: products.map(({ id, amount }) => ({
 					amount,
